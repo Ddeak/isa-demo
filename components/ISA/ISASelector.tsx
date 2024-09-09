@@ -2,7 +2,7 @@ import Colours from '@/constants/Colours';
 import { TestISAs } from '@/testData';
 import { ISA } from '@/types';
 import { StyleSheet, FlatList, TouchableOpacity, View } from 'react-native';
-import { Button, Divider, Text } from 'react-native-paper';
+import { Button, Divider, Icon, Text } from 'react-native-paper';
 
 type ISASelectorProps = {
   selectedISA?: ISA;
@@ -21,11 +21,11 @@ const ISASelector = ({ selectedISA, onSelect }: ISASelectorProps) => {
           data={TestISAs}
           renderItem={({ item }) => (
             <TouchableOpacity
-              style={styles.item}
+              style={styles.touchable}
               key={item.id}
               onPress={() => onSelect(item)}
             >
-              <View style={styles.row}>
+              <View style={styles.item}>
                 <Text style={styles.text} variant='titleLarge'>
                   {item.name}
                 </Text>
@@ -44,10 +44,17 @@ const ISASelector = ({ selectedISA, onSelect }: ISASelectorProps) => {
       <Text style={styles.header} variant='bodyLarge'>
         ISA:
       </Text>
-      <View style={styles.row}>
-        <Text style={styles.text} variant='titleLarge'>
-          {selectedISA.name}
-        </Text>
+      <View style={styles.item}>
+        <View style={styles.selectedText}>
+          <Text style={styles.text} variant='titleLarge'>
+            {selectedISA.name}
+          </Text>
+          <Icon
+            source='check-circle-outline'
+            size={25}
+            color={Colours.Success}
+          />
+        </View>
 
         <Button onPress={() => onSelect(undefined)} mode='text'>
           <Text style={styles.buttonText} variant='bodyLarge'>
@@ -64,7 +71,7 @@ const styles = StyleSheet.create({
     width: '100%',
     flexGrow: 0,
   },
-  item: {
+  touchable: {
     paddingVertical: 10,
     paddingHorizontal: 15,
   },
@@ -74,16 +81,22 @@ const styles = StyleSheet.create({
   buttonText: {
     color: Colours.PrimaryPurple,
   },
-  row: {
+  item: {
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   header: {
     color: Colours.White,
     marginVertical: 20,
+  },
+  selectedText: {
+    flexDirection: 'row',
+    width: '45%',
+    justifyContent: 'space-between',
+    paddingHorizontal: 15,
   },
 });
 

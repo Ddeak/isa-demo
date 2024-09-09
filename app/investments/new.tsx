@@ -1,6 +1,7 @@
 import FundSelector from '@/components/Fund/FundSelector';
 import ISASelector from '@/components/ISA/ISASelector';
 import UserSelector from '@/components/Users/UserSelector';
+import Colours from '@/constants/Colours';
 import { TestISAs } from '@/testData';
 import { Fund, ISA, User } from '@/types';
 import { useLocalSearchParams } from 'expo-router';
@@ -39,7 +40,12 @@ const NewInvestmentScreen = () => {
       />
 
       <View style={styles.buttonView}>
-        <Button mode='contained' onPress={onInvestPress} style={styles.button}>
+        <Button
+          mode='contained'
+          onPress={onInvestPress}
+          style={styles.button}
+          buttonColor={Colours.PrimaryPurple}
+        >
           Invest
         </Button>
       </View>
@@ -55,10 +61,11 @@ const styles = StyleSheet.create({
     paddingTop: 15,
   },
   text: {
-    color: '#fff',
+    color: Colours.White,
   },
   button: {
     width: '100%',
+    paddingVertical: 5,
   },
   buttonView: {
     marginTop: 100,

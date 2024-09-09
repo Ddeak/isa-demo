@@ -2,7 +2,7 @@ import Colours from '@/constants/Colours';
 import { TestFunds } from '@/testData';
 import { Fund } from '@/types';
 import { StyleSheet, FlatList, TouchableOpacity, View } from 'react-native';
-import { Button, Divider, Text } from 'react-native-paper';
+import { Button, Divider, Icon, Text } from 'react-native-paper';
 
 type FundSelectorProps = {
   selectedFund?: Fund;
@@ -48,9 +48,16 @@ const FundSelector = ({ selectedFund, onSelect }: FundSelectorProps) => {
         Fund:
       </Text>
       <View style={styles.row}>
-        <Text style={styles.text} variant='titleLarge'>
-          {intToCurrency(selectedFund.amount)}
-        </Text>
+        <View style={styles.selectedText}>
+          <Text style={styles.text} variant='titleLarge'>
+            {intToCurrency(selectedFund.amount)}
+          </Text>
+          <Icon
+            source='check-circle-outline'
+            size={25}
+            color={Colours.Success}
+          />
+        </View>
 
         <Button onPress={() => onSelect(undefined)} mode='text'>
           <Text style={styles.buttonText} variant='bodyLarge'>
@@ -82,11 +89,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   header: {
     color: Colours.White,
-    marginVertical: 20,
+    marginVertical: 15,
+  },
+  selectedText: {
+    flexDirection: 'row',
+    width: '40%',
+    paddingHorizontal: 15,
+    justifyContent: 'space-between',
   },
 });
 

@@ -1,5 +1,6 @@
 import AddButton from '@/components/AddButton';
 import ISAList from '@/components/ISA/ISAList';
+import Colours from '@/constants/Colours';
 import { TestISAs } from '@/testData';
 import { StyleSheet, View } from 'react-native';
 import { Icon, Text } from 'react-native-paper';
@@ -10,7 +11,7 @@ const HomeScreen = () => (
       <Text variant='displayLarge' style={styles.header}>
         ISA-Demo
       </Text>
-      <Icon size={50} source='finance' color='#fff' />
+      <Icon size={50} source='finance' color={Colours.PrimaryPurple} />
     </View>
 
     <ISAList data={TestISAs} />

@@ -2,7 +2,7 @@ import Colours from '@/constants/Colours';
 import { TestUsers } from '@/testData';
 import { User } from '@/types';
 import { StyleSheet, FlatList, TouchableOpacity, View } from 'react-native';
-import { Button, Divider, Text } from 'react-native-paper';
+import { Button, Divider, Icon, Text } from 'react-native-paper';
 
 type UserSelectorProps = {
   selectedUser?: User;
@@ -45,9 +45,16 @@ const UserSelector = ({ selectedUser, onSelect }: UserSelectorProps) => {
         User:
       </Text>
       <View style={styles.row}>
-        <Text style={styles.text} variant='titleLarge'>
-          {selectedUser.name}
-        </Text>
+        <View style={styles.selectedText}>
+          <Text style={styles.text} variant='titleLarge'>
+            {selectedUser.name}
+          </Text>
+          <Icon
+            source='check-circle-outline'
+            size={25}
+            color={Colours.Success}
+          />
+        </View>
 
         <Button onPress={() => onSelect(undefined)} mode='text'>
           <Text style={styles.buttonText} variant='bodyLarge'>
@@ -79,11 +86,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   header: {
     color: Colours.White,
     marginVertical: 20,
+  },
+  selectedText: {
+    flexDirection: 'row',
+    width: '40%',
+    justifyContent: 'space-between',
+    paddingHorizontal: 15,
   },
 });
 

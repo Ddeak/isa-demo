@@ -30,8 +30,8 @@ const ISAList = ({ data }: ISAListProps) => (
               }}
               asChild
             >
-              <Button buttonColor='#aaa' mode='outlined'>
-                <Text style={styles.text} variant='bodyLarge'>
+              <Button mode='text'>
+                <Text style={styles.buttonText} variant='bodyLarge'>
                   Invest
                 </Text>
               </Button>
@@ -55,6 +55,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: Colours.White,
+  },
+  buttonText: {
+    color: Colours.PrimaryPurple,
   },
   row: {
     flexDirection: 'row',

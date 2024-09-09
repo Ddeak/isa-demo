@@ -1,3 +1,4 @@
+import Colours from '@/constants/Colours';
 import { Routes } from '@/constants/routes';
 import { ISA } from '@/types';
 import { Link } from 'expo-router';
@@ -24,7 +25,7 @@ const ISAList = ({ data }: ISAListProps) => (
             </Text>
             <Link
               href={{
-                pathname: Routes.NEW_INVESTMENT,
+                pathname: `/${Routes.NEW_INVESTMENT}`,
                 params: { isaID: item.id },
               }}
               asChild
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   text: {
-    color: '#fff',
+    color: Colours.White,
   },
   row: {
     flexDirection: 'row',
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   header: {
-    color: '#fff',
+    color: Colours.White,
     marginVertical: 20,
   },
 });

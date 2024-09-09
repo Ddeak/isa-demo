@@ -1,3 +1,4 @@
+import { Routes } from '@/constants/routes';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
@@ -44,7 +45,13 @@ const RootLayout = () => {
   return (
     <PaperProvider>
       <ThemeProvider value={DarkTheme}>
-        <Stack screenOptions={{ title: 'Home' }}></Stack>
+        <Stack>
+          <Stack.Screen name='index' options={{ title: 'Home' }}></Stack.Screen>
+          <Stack.Screen
+            name={Routes.NEW_INVESTMENT}
+            options={{ title: 'New Investment' }}
+          ></Stack.Screen>
+        </Stack>
       </ThemeProvider>
     </PaperProvider>
   );

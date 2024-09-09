@@ -8,7 +8,7 @@ export const TestISAs: ISA[] = [
   },
 ];
 
-export const Funds: Fund[] = [
+export const TestFunds: Fund[] = [
   {
     id: 'fund-1',
     amount: 25000,

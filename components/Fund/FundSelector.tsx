@@ -1,24 +1,27 @@
 import Colours from '@/constants/Colours';
-import { TestISAs } from '@/testData';
-import { ISA } from '@/types';
+import { TestFunds } from '@/testData';
+import { Fund } from '@/types';
 import { StyleSheet, FlatList, TouchableOpacity, View } from 'react-native';
 import { Button, Divider, Text } from 'react-native-paper';
 
-type ISASelectorProps = {
-  selectedISA?: ISA;
-  onSelect: (isa?: ISA) => void;
+type FundSelectorProps = {
+  selectedFund?: Fund;
+  onSelect: (fund?: Fund) => void;
 };
 
-const ISASelector = ({ selectedISA, onSelect }: ISASelectorProps) => {
-  if (!selectedISA) {
+const intToCurrency = (number: number) =>
+  '£' + number.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+
+const FundSelector = ({ selectedFund, onSelect }: FundSelectorProps) => {
+  if (!selectedFund) {
     return (
       <>
         <Text style={styles.header} variant='bodyLarge'>
-          Select an ISA
+          Select an Fund
         </Text>
         <FlatList
           style={styles.list}
-          data={TestISAs}
+          data={TestFunds}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.item}
@@ -27,7 +30,7 @@ const ISASelector = ({ selectedISA, onSelect }: ISASelectorProps) => {
             >
               <View style={styles.row}>
                 <Text style={styles.text} variant='titleLarge'>
-                  {item.name}
+                  {intToCurrency(item.amount)}
                 </Text>
               </View>
 
@@ -42,11 +45,11 @@ const ISASelector = ({ selectedISA, onSelect }: ISASelectorProps) => {
   return (
     <>
       <Text style={styles.header} variant='bodyLarge'>
-        ISA:
+        Fund:
       </Text>
       <View style={styles.row}>
         <Text style={styles.text} variant='titleLarge'>
-          {selectedISA.name}
+          {intToCurrency(selectedFund.amount)}
         </Text>
 
         <Button onPress={() => onSelect(undefined)} mode='text'>
@@ -87,4 +90,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ISASelector;
+export default FundSelector;

@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import { Routes } from '@/constants/routes';
 
 const AddButton = () => (
-  <Link href={Routes.NEW_INVESTMENT} asChild>
+  <Link href={`/${Routes.NEW_INVESTMENT}`} asChild>
     <IconButton icon='plus' size={50} mode='contained' style={styles.button} />
   </Link>
 );

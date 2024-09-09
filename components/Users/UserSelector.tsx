@@ -1,24 +1,24 @@
 import Colours from '@/constants/Colours';
-import { TestISAs } from '@/testData';
-import { ISA } from '@/types';
+import { TestUsers } from '@/testData';
+import { User } from '@/types';
 import { StyleSheet, FlatList, TouchableOpacity, View } from 'react-native';
 import { Button, Divider, Text } from 'react-native-paper';
 
-type ISASelectorProps = {
-  selectedISA?: ISA;
-  onSelect: (isa?: ISA) => void;
+type UserSelectorProps = {
+  selectedUser?: User;
+  onSelect: (user?: User) => void;
 };
 
-const ISASelector = ({ selectedISA, onSelect }: ISASelectorProps) => {
-  if (!selectedISA) {
+const UserSelector = ({ selectedUser, onSelect }: UserSelectorProps) => {
+  if (!selectedUser) {
     return (
       <>
         <Text style={styles.header} variant='bodyLarge'>
-          Select an ISA
+          Select a User
         </Text>
         <FlatList
           style={styles.list}
-          data={TestISAs}
+          data={TestUsers}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.item}
@@ -42,11 +42,11 @@ const ISASelector = ({ selectedISA, onSelect }: ISASelectorProps) => {
   return (
     <>
       <Text style={styles.header} variant='bodyLarge'>
-        ISA:
+        User:
       </Text>
       <View style={styles.row}>
         <Text style={styles.text} variant='titleLarge'>
-          {selectedISA.name}
+          {selectedUser.name}
         </Text>
 
         <Button onPress={() => onSelect(undefined)} mode='text'>
@@ -87,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ISASelector;
+export default UserSelector;

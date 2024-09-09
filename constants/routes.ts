@@ -1,4 +1,4 @@
 export enum Routes {
-  HOME = '/',
-  NEW_INVESTMENT = '/investments/new',
+  HOME = 'index',
+  NEW_INVESTMENT = 'investments/new',
 }

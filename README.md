@@ -18,7 +18,10 @@ This is a small demo application, written using expo / React-Native. The aim is 
 - Similar to above, I have chosen to use `create-expo-app` in order to spin up a base native application quickly. I am sure there are potentially better ways to create a RN project.
 - My goal as of starting this project, is to try to meet the basic functionality of the requirements.
   - My initial thoughts are to have something running in RN, and have the tools I need, eg navigation (React-Navigation), some form of ui to work with (Material / React-Native Paper), and consider a way to persist data to view transactions when coming back to the app. 
+- Finally, with the above in mind, I do not plan to add testing for this project.
 
 #### Challenges:
 
 - Expo-Router has a small learning curve. 
+- For the sake of simplicity, I have opted not to do any authentication / user management, and will simply use a list of users.
+- 

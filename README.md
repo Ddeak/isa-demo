@@ -20,6 +20,11 @@ This is a small demo application, written using expo / React-Native. The aim is 
   - My initial thoughts are to have something running in RN, and have the tools I need, eg navigation (React-Navigation), some form of ui to work with (Material / React-Native Paper), and consider a way to persist data to view transactions when coming back to the app. 
 - Finally, with the above in mind, I do not plan to add testing for this project.
 
+#### Things I would improve:
+
+- Proper theming - I removed the basic theme boilerplate code that came with the expo app. In hindsight, I should have kept it and used it. 
+- Create a generic 'list' component that takes in props such as text to display, and optional components on the 'right' rather than creating a new FlatList for each. 
+
 #### Challenges:
 
 - Expo-Router has a small learning curve. 

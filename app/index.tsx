@@ -1,19 +1,23 @@
 import AddButton from '@/components/AddButton';
-import { StyleSheet, View, Text } from 'react-native';
-import { Icon } from 'react-native-paper';
+import ISAList from '@/components/ISA/ISAList';
+import { TestISAs } from '@/testData';
+import { StyleSheet, View } from 'react-native';
+import { Icon, Text } from 'react-native-paper';
 
-const HomeScreen = () => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.row}>
-        <Text style={styles.header}>ISA-Demo</Text>
-        <Icon size={50} source='finance' color='#fff' />
-      </View>
-
-      <AddButton />
+const HomeScreen = () => (
+  <View style={styles.container}>
+    <View style={styles.row}>
+      <Text variant='displayLarge' style={styles.header}>
+        ISA-Demo
+      </Text>
+      <Icon size={50} source='finance' color='#fff' />
     </View>
-  );
-};
+
+    <ISAList data={TestISAs} />
+
+    <AddButton />
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -29,10 +33,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   header: {
-    fontSize: 30,
-    fontWeight: 'bold',
     color: '#fff',
-    textDecorationLine: 'underline',
   },
 });
 

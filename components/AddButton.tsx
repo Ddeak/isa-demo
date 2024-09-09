@@ -1,16 +1,11 @@
 import { IconButton } from 'react-native-paper';
 import { Link } from 'expo-router';
 import { StyleSheet } from 'react-native';
+import { Routes } from '@/constants/routes';
 
 const AddButton = () => (
-  <Link href='/investments/new' asChild>
-    <IconButton
-      icon='plus'
-      size={50}
-      onPress={() => console.log('Pressed')}
-      mode='contained'
-      style={styles.button}
-    />
+  <Link href={Routes.NEW_INVESTMENT} asChild>
+    <IconButton icon='plus' size={50} mode='contained' style={styles.button} />
   </Link>
 );
 

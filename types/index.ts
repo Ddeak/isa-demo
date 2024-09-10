@@ -1,21 +1,25 @@
 export type ISA = {
-  id: string;
+  _id: string;
   name: string;
-  total: number;
+  createdAt: Date;
 };
 
 export type Investment = {
+  _id: string;
   userId: string;
   isaId: string;
   fundId: string;
+  createdAt: Date;
 };
 
 export type User = {
-  id: string;
+  _id: string;
   name: string;
+  createdAt: Date;
 };
 
 export type Fund = {
-  id: string;
+  _id: string;
   amount: number;
+  createdAt: Date;
 };

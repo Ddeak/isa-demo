@@ -5,17 +5,23 @@ import ISASelector from '@/components/ISA/ISASelector';
 import UserSelector from '@/components/Users/UserSelector';
 import Colours from '@/constants/Colours';
 import { investValidation } from '@/helpers/validation';
+import { ISA as ISAModel } from '@/schema/ISA';
+import { createInvestment } from '@/services/investment';
 import { TestISAs } from '@/testData';
 import { Fund, ISA, User } from '@/types';
-import { useLocalSearchParams } from 'expo-router';
+import { useQuery, useRealm } from '@realm/react';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Button } from 'react-native-paper';
 
 const NewInvestmentScreen = () => {
   const params = useLocalSearchParams();
+  const isas = useQuery(ISAModel);
+  const realm = useRealm();
+  const router = useRouter();
   const [selectedISA, setSelectedISA] = useState<ISA | undefined>(
-    TestISAs.find((isa) => isa.id === params.isaID)
+    isas.find((isa) => isa._id === params.isaID)
   );
   const [selectedFund, setSelectedFund] = useState<Fund | undefined>();
   const [selectedUser, setSelectedUser] = useState<User | undefined>();
@@ -38,6 +44,17 @@ const NewInvestmentScreen = () => {
 
   const onConfirm = () => {
     setShowDialog(false);
+    const id = `${selectedISA?._id} - ${
+      selectedFund?._id
+    } - ${new Date().toISOString()}`;
+    createInvestment(
+      realm,
+      id,
+      selectedISA?._id,
+      selectedFund?._id,
+      selectedUser?._id
+    );
+    router.back();
   };
 
   return (

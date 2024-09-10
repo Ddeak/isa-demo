@@ -1,6 +1,8 @@
 import Colours from '@/constants/Colours';
+import { ISA as ISAModel } from '@/schema/ISA';
 import { TestISAs } from '@/testData';
 import { ISA } from '@/types';
+import { useQuery } from '@realm/react';
 import { StyleSheet, FlatList, TouchableOpacity, View } from 'react-native';
 import { Button, Divider, Icon, Text } from 'react-native-paper';
 
@@ -10,6 +12,7 @@ type ISASelectorProps = {
 };
 
 const ISASelector = ({ selectedISA, onSelect }: ISASelectorProps) => {
+  const isas = useQuery(ISAModel);
   if (!selectedISA) {
     return (
       <>
@@ -18,11 +21,11 @@ const ISASelector = ({ selectedISA, onSelect }: ISASelectorProps) => {
         </Text>
         <FlatList
           style={styles.list}
-          data={TestISAs}
+          data={isas}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.touchable}
-              key={item.id}
+              key={item._id}
               onPress={() => onSelect(item)}
             >
               <View style={styles.item}>

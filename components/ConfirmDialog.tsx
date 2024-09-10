@@ -28,6 +28,9 @@ const ConfirmDialog = ({
           </Text>
         </Dialog.Content>
         <Dialog.Actions>
+          <Button onPress={onCancel}>Cancel</Button>
+        </Dialog.Actions>
+        <Dialog.Actions>
           <Button onPress={onConfirm}>Done</Button>
         </Dialog.Actions>
       </Dialog>

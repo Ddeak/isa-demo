@@ -1,7 +1,8 @@
 import Colours from '@/constants/Colours';
 import { intToCurrency } from '@/helpers/format';
-import { TestFunds } from '@/testData';
+import { Fund as FundModel } from '@/schema/Fund';
 import { Fund } from '@/types';
+import { useQuery } from '@realm/react';
 import { StyleSheet, FlatList, TouchableOpacity, View } from 'react-native';
 import { Button, Divider, Icon, Text } from 'react-native-paper';
 
@@ -11,6 +12,8 @@ type FundSelectorProps = {
 };
 
 const FundSelector = ({ selectedFund, onSelect }: FundSelectorProps) => {
+  const funds = useQuery(FundModel);
+
   if (!selectedFund) {
     return (
       <>
@@ -19,11 +22,11 @@ const FundSelector = ({ selectedFund, onSelect }: FundSelectorProps) => {
         </Text>
         <FlatList
           style={styles.list}
-          data={TestFunds}
+          data={funds}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.item}
-              key={item.id}
+              key={item._id}
               onPress={() => onSelect(item)}
             >
               <View style={styles.row}>

@@ -1,8 +1,7 @@
 import AddButton from '@/components/AddButton';
 import ISAList from '@/components/ISA/ISAList';
 import Colours from '@/constants/Colours';
-import { TestISAs } from '@/testData';
-import { useQuery, useRealm } from '@realm/react';
+import { useQuery } from '@realm/react';
 import { StyleSheet, View } from 'react-native';
 import { Icon, Text } from 'react-native-paper';
 import { ISA } from '../schema/ISA';
@@ -10,7 +9,7 @@ import { useInitialData } from '@/helpers/hooks';
 
 const HomeScreen = () => {
   const isas = useQuery(ISA);
-  useInitialData(isas);
+  useInitialData();
 
   return (
     <View style={styles.container}>

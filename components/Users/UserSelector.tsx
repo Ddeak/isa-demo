@@ -1,6 +1,7 @@
 import Colours from '@/constants/Colours';
-import { TestUsers } from '@/testData';
+import { User as UserModel } from '@/schema/User';
 import { User } from '@/types';
+import { useQuery } from '@realm/react';
 import { StyleSheet, FlatList, TouchableOpacity, View } from 'react-native';
 import { Button, Divider, Icon, Text } from 'react-native-paper';
 
@@ -10,6 +11,8 @@ type UserSelectorProps = {
 };
 
 const UserSelector = ({ selectedUser, onSelect }: UserSelectorProps) => {
+  const users = useQuery(UserModel);
+
   if (!selectedUser) {
     return (
       <>
@@ -18,11 +21,11 @@ const UserSelector = ({ selectedUser, onSelect }: UserSelectorProps) => {
         </Text>
         <FlatList
           style={styles.list}
-          data={TestUsers}
+          data={users}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.item}
-              key={item.id}
+              key={item._id}
               onPress={() => onSelect(item)}
             >
               <View style={styles.row}>

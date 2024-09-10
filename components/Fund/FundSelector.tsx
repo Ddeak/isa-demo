@@ -1,4 +1,5 @@
 import Colours from '@/constants/Colours';
+import { intToCurrency } from '@/helpers/format';
 import { TestFunds } from '@/testData';
 import { Fund } from '@/types';
 import { StyleSheet, FlatList, TouchableOpacity, View } from 'react-native';
@@ -8,9 +9,6 @@ type FundSelectorProps = {
   selectedFund?: Fund;
   onSelect: (fund?: Fund) => void;
 };
-
-const intToCurrency = (number: number) =>
-  '£' + number.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 
 const FundSelector = ({ selectedFund, onSelect }: FundSelectorProps) => {
   if (!selectedFund) {
@@ -80,6 +78,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: Colours.White,
+    marginRight: 10,
   },
   buttonText: {
     color: Colours.PrimaryPurple,
@@ -97,7 +96,6 @@ const styles = StyleSheet.create({
   },
   selectedText: {
     flexDirection: 'row',
-    width: '40%',
     paddingHorizontal: 15,
     justifyContent: 'space-between',
   },

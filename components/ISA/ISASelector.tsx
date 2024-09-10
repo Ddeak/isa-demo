@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: Colours.White,
+    marginRight: 10,
   },
   buttonText: {
     color: Colours.PrimaryPurple,
@@ -94,7 +95,6 @@ const styles = StyleSheet.create({
   },
   selectedText: {
     flexDirection: 'row',
-    width: '45%',
     justifyContent: 'space-between',
     paddingHorizontal: 15,
   },

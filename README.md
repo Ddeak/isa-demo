@@ -24,9 +24,11 @@ This is a small demo application, written using expo / React-Native. The aim is 
 
 - Proper theming - I removed the basic theme boilerplate code that came with the expo app. In hindsight, I should have kept it and used it. 
 - Create a generic 'list' component that takes in props such as text to display, and optional components on the 'right' rather than creating a new FlatList for each. 
+- Normally I work with branches when developing new things, but I kept to the 'main' branch for this as there is no pipeline / CI implications. 
 
 #### Challenges:
 
 - Expo-Router has a small learning curve. 
 - For the sake of simplicity, I have opted not to do any authentication / user management, and will simply use a list of users.
-- 
+- I have a feeling that putting all the providers in the root `layout.tsx` is not the ideal location.
+- Getting Typescript and Realm to cooperate has been troublesome, I've had to add a number of ts-ignore lines which I generally prefer to avoid. 

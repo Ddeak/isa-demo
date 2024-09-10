@@ -1,12 +1,13 @@
+import { ISA } from '@/schema/ISA';
 import Colours from '@/constants/Colours';
 import { Routes } from '@/constants/routes';
-import { ISA } from '@/types';
 import { Link } from 'expo-router';
 import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Button, Divider, Text } from 'react-native-paper';
+import { Results } from 'realm';
 
 type ISAListProps = {
-  data: ISA[];
+  data: Results<ISA>;
 };
 
 const ISAList = ({ data }: ISAListProps) => (
@@ -18,7 +19,7 @@ const ISAList = ({ data }: ISAListProps) => (
       style={styles.list}
       data={data}
       renderItem={({ item }) => (
-        <View style={styles.item} key={item.id}>
+        <View style={styles.item} key={item._id}>
           <View style={styles.row}>
             <Text style={styles.text} variant='titleLarge'>
               {item.name}
@@ -26,7 +27,7 @@ const ISAList = ({ data }: ISAListProps) => (
             <Link
               href={{
                 pathname: `/${Routes.NEW_INVESTMENT}`,
-                params: { isaID: item.id },
+                params: { isaID: item._id },
               }}
               asChild
             >

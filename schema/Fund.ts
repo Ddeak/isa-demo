@@ -4,7 +4,7 @@ export class Fund extends Realm.Object<Fund> {
   // @ts-ignore
   _id: string;
   // @ts-ignore
-  amount: number;
+  name: string;
   createdAt: Date = new Date();
 
   static primaryKey = '_id';
@@ -14,7 +14,7 @@ export class Fund extends Realm.Object<Fund> {
     primaryKey: '_id',
     properties: {
       _id: 'string',
-      amount: 'int',
+      name: 'string',
       createdAt: {
         type: 'date',
         default: new Date(),
@@ -22,10 +22,10 @@ export class Fund extends Realm.Object<Fund> {
     },
   };
 
-  constructor(realm: any, _id: string, amount: number) {
+  constructor(realm: any, _id: string, name: string) {
     super(realm, {
       _id,
-      amount,
+      name,
     });
   }
 }

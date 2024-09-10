@@ -10,6 +10,13 @@ const formatDate = (date: Date) =>
 const InvestmentList = () => {
   const investments = useLinkedInvestments();
 
+  if (!investments.length)
+    return (
+      <Text style={styles.text} variant='titleMedium'>
+        No investments have been recorded yet.
+      </Text>
+    );
+
   return (
     <FlatList
       style={styles.list}
@@ -19,7 +26,7 @@ const InvestmentList = () => {
           <View style={styles.row}>
             <Text style={styles.text} variant='titleSmall'>
               {item.user} invested {intToCurrency(item.amount)} into {item.isa}{' '}
-              on {formatDate(item.date)}
+              in the {item.fund} on {formatDate(item.date)}
             </Text>
           </View>
 

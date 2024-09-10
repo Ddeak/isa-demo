@@ -9,6 +9,8 @@ export class Investment extends Realm.Object<Investment> {
   fundId: string;
   // @ts-ignore
   userId: string;
+  // @ts-ignore
+  amount: number;
   createdAt: Date = new Date();
 
   static primaryKey = '_id';
@@ -21,6 +23,7 @@ export class Investment extends Realm.Object<Investment> {
       isaId: 'string',
       fundId: 'string',
       userId: 'string',
+      amount: 'int',
       createdAt: {
         type: 'date',
         default: new Date(),
@@ -33,13 +36,15 @@ export class Investment extends Realm.Object<Investment> {
     _id: string,
     isaId: string,
     fundId: string,
-    userId: string
+    userId: string,
+    amount: number
   ) {
     super(realm, {
       _id,
       isaId,
       fundId,
       userId,
+      amount,
     });
   }
 }

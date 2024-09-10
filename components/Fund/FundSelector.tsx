@@ -18,7 +18,7 @@ const FundSelector = ({ selectedFund, onSelect }: FundSelectorProps) => {
     return (
       <>
         <Text style={styles.header} variant='bodyLarge'>
-          Select an Fund
+          Select a Fund
         </Text>
         <FlatList
           style={styles.list}
@@ -31,7 +31,7 @@ const FundSelector = ({ selectedFund, onSelect }: FundSelectorProps) => {
             >
               <View style={styles.row}>
                 <Text style={styles.text} variant='titleLarge'>
-                  {intToCurrency(item.amount)}
+                  {item.name}
                 </Text>
               </View>
 
@@ -51,7 +51,7 @@ const FundSelector = ({ selectedFund, onSelect }: FundSelectorProps) => {
       <View style={styles.row}>
         <View style={styles.selectedText}>
           <Text style={styles.text} variant='titleLarge'>
-            {intToCurrency(selectedFund.amount)}
+            {selectedFund.name}
           </Text>
           <Icon
             source='check-circle-outline'

@@ -1,20 +1,20 @@
 import { intToCurrency } from '@/helpers/format';
-import { Fund, ISA } from '@/types';
+import { Investment, ISA } from '@/types';
 import { Button, Dialog, Portal, Text } from 'react-native-paper';
 
 type ConfirmDialogProps = {
   showDialog: boolean;
   onConfirm: () => void;
   onCancel: () => void;
+  amount: number;
   isa?: ISA;
-  fund?: Fund;
 };
 
 const ConfirmDialog = ({
   showDialog,
   onConfirm,
   onCancel,
-  fund,
+  amount,
   isa,
 }: ConfirmDialogProps) => {
   return (
@@ -23,15 +23,15 @@ const ConfirmDialog = ({
         <Dialog.Title>Confirm Investment</Dialog.Title>
         <Dialog.Content>
           <Text variant='bodyMedium'>
-            Are you sure you wish to invest {intToCurrency(fund?.amount || 0)}{' '}
-            into {isa?.name}?
+            Are you sure you wish to invest {intToCurrency(amount)} into{' '}
+            {isa?.name}?
           </Text>
         </Dialog.Content>
         <Dialog.Actions>
           <Button onPress={onCancel}>Cancel</Button>
         </Dialog.Actions>
         <Dialog.Actions>
-          <Button onPress={onConfirm}>Done</Button>
+          <Button onPress={onConfirm}>Yes</Button>
         </Dialog.Actions>
       </Dialog>
     </Portal>

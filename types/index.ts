@@ -9,6 +9,7 @@ export type Investment = {
   userId: string;
   isaId: string;
   fundId: string;
+  amount: number;
   createdAt: Date;
 };
 
@@ -20,6 +21,6 @@ export type User = {
 
 export type Fund = {
   _id: string;
-  amount: number;
+  name: string;
   createdAt: Date;
 };

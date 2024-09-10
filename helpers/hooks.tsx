@@ -15,7 +15,7 @@ export const useInitialData = () => {
   useEffect(() => {
     const createInitialData = () => {
       createISA(realm, 'cushon-isa-1', 'Cushon ISA 1');
-      createFund(realm, 'fund-1', 25000);
+      createFund(realm, 'fund-1', 'Cushon Equities Fund');
       createUser(realm, 'user-1', 'John Wick');
       createUser(realm, 'user-2', 'Daniel Deak');
     };
@@ -43,8 +43,9 @@ export const useLinkedInvestments = () => {
 
     return {
       user: user[0].name,
-      amount: fund[0].amount,
+      fund: fund[0].name,
       isa: isa[0].name,
+      amount: investment.amount,
       date: investment.createdAt,
     };
   });

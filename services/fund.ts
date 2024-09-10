@@ -1,8 +1,8 @@
 import { Fund } from '@/schema/Fund';
 
-export const createFund = (realm: Realm, _id: string, amount: number) => {
+export const createFund = (realm: Realm, _id: string, name: string) => {
   realm.write(() => {
-    return new Fund(realm, _id, amount);
+    return new Fund(realm, _id, name);
   });
 };
 

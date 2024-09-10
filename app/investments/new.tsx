@@ -1,6 +1,7 @@
 import ConfirmDialog from '@/components/ConfirmDialog';
 import ErrorList from '@/components/ErrorList';
 import FundSelector from '@/components/Fund/FundSelector';
+import InvestmentInput from '@/components/Investment/InvestmentInput';
 import ISASelector from '@/components/ISA/ISASelector';
 import UserSelector from '@/components/Users/UserSelector';
 import Colours from '@/constants/Colours';
@@ -11,8 +12,8 @@ import { Fund, ISA, User } from '@/types';
 import { useQuery, useRealm } from '@realm/react';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { Button, Snackbar } from 'react-native-paper';
+import { StyleSheet, View } from 'react-native';
+import { Button, TextInput } from 'react-native-paper';
 
 const NewInvestmentScreen = () => {
   const params = useLocalSearchParams();
@@ -26,9 +27,13 @@ const NewInvestmentScreen = () => {
   const [selectedUser, setSelectedUser] = useState<User | undefined>();
   const [errors, setErrors] = useState<string[]>([]);
   const [showDialog, setShowDialog] = useState(false);
+  const [investment, setInvestment] = useState('');
+
+  const intInvestment = parseInt(investment);
 
   const onInvestPress = () => {
     const validationErrors = investValidation({
+      amount: intInvestment,
       isa: selectedISA,
       fund: selectedFund,
       user: selectedUser,
@@ -49,12 +54,16 @@ const NewInvestmentScreen = () => {
     createInvestment(
       realm,
       id,
+      intInvestment,
       selectedISA?._id,
       selectedFund?._id,
       selectedUser?._id
     );
     router.back();
   };
+
+  const onAmountChange = (text: string) =>
+    setInvestment(text.replace(/[^0-9]/g, ''));
 
   return (
     <View style={styles.container}>
@@ -65,7 +74,6 @@ const NewInvestmentScreen = () => {
           setSelectedISA(isa);
         }}
       />
-
       <FundSelector
         selectedFund={selectedFund}
         onSelect={(fund) => {
@@ -73,7 +81,6 @@ const NewInvestmentScreen = () => {
           setSelectedFund(fund);
         }}
       />
-
       <UserSelector
         selectedUser={selectedUser}
         onSelect={(user) => {
@@ -82,6 +89,8 @@ const NewInvestmentScreen = () => {
         }}
       />
 
+      <InvestmentInput value={investment} onAmountChange={onAmountChange} />
+
       <ErrorList errors={errors} />
 
       <ConfirmDialog
@@ -89,9 +98,8 @@ const NewInvestmentScreen = () => {
         onCancel={() => setShowDialog(false)}
         onConfirm={onConfirm}
         isa={selectedISA}
-        fund={selectedFund}
+        amount={intInvestment}
       />
-
       <View style={styles.buttonView}>
         <Button
           mode='contained'
@@ -125,6 +133,9 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',
+  },
+  input: {
+    width: '100%',
   },
 });
 

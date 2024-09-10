@@ -7,13 +7,12 @@ import Colours from '@/constants/Colours';
 import { investValidation } from '@/helpers/validation';
 import { ISA as ISAModel } from '@/schema/ISA';
 import { createInvestment } from '@/services/investment';
-import { TestISAs } from '@/testData';
 import { Fund, ISA, User } from '@/types';
 import { useQuery, useRealm } from '@realm/react';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Button } from 'react-native-paper';
+import { Button, Snackbar } from 'react-native-paper';
 
 const NewInvestmentScreen = () => {
   const params = useLocalSearchParams();

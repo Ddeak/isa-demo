@@ -49,6 +49,7 @@ const ISAList = ({ data }: ISAListProps) => (
 const styles = StyleSheet.create({
   list: {
     width: '100%',
+    flexGrow: 0,
   },
   item: {
     paddingVertical: 10,

@@ -64,6 +64,12 @@ const RootLayout = () => {
               name={Routes.NEW_INVESTMENT}
               options={{ title: 'New Investment' }}
             ></Stack.Screen>
+            <Stack.Screen
+              name={Routes.INVESTMENTS}
+              options={{
+                title: 'Investments',
+              }}
+            ></Stack.Screen>
           </Stack>
         </ThemeProvider>
       </PaperProvider>

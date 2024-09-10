@@ -12,7 +12,7 @@ const ErrorList = ({ errors }: ErrorListProps) => {
   return (
     <View style={styles.container}>
       {errors.map((error) => (
-        <Text style={styles.text} variant='bodyMedium'>
+        <Text style={styles.text} variant='bodyMedium' key={error}>
           {error}
         </Text>
       ))}

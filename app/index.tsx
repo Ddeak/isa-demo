@@ -6,6 +6,7 @@ import { StyleSheet, View } from 'react-native';
 import { Icon, Text } from 'react-native-paper';
 import { ISA } from '../schema/ISA';
 import { useInitialData } from '@/helpers/hooks';
+import InvestmentButton from '@/components/InvestmentButton';
 
 const HomeScreen = () => {
   const isas = useQuery(ISA);
@@ -21,6 +22,8 @@ const HomeScreen = () => {
       </View>
 
       <ISAList data={isas} />
+
+      <InvestmentButton />
 
       <AddButton />
     </View>

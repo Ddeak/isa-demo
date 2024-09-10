@@ -1,17 +1,12 @@
+import InvestmentList from '@/components/Investment/InvestmentList';
 import Colours from '@/constants/Colours';
-import { Investment } from '@/schema/Investment';
-import { useQuery } from '@realm/react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-const NewInvestmentScreen = () => {
-  const investments = useQuery(Investment);
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello World {investments.length}</Text>
-    </View>
-  );
-};
+const NewInvestmentScreen = () => (
+  <View style={styles.container}>
+    <InvestmentList />
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {

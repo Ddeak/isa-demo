@@ -1,5 +1,7 @@
 import { Fund } from '@/schema/Fund';
+import { Investment } from '@/schema/Investment';
 import { ISA } from '@/schema/ISA';
+import { User } from '@/schema/User';
 import { createFund } from '@/services/fund';
 import { createISA } from '@/services/isa';
 import { createUser } from '@/services/user';
@@ -13,8 +15,8 @@ export const useInitialData = () => {
   useEffect(() => {
     const createInitialData = () => {
       createISA(realm, 'cushon-isa-1', 'Cushon ISA 1');
-      // createFund(realm, 'fund-1', 25000);
-      // createUser(realm, 'user-1', 'John Wick');
+      createFund(realm, 'fund-1', 25000);
+      createUser(realm, 'user-1', 'John Wick');
       createUser(realm, 'user-2', 'Daniel Deak');
     };
 
@@ -23,4 +25,27 @@ export const useInitialData = () => {
       createInitialData();
     }
   }, [isas]);
+};
+
+export const useLinkedInvestments = () => {
+  const investments = useQuery(Investment);
+
+  return investments.map((investment) => {
+    const fund = useQuery(Fund, (coll) =>
+      coll.filtered('_id == $0', investment.fundId)
+    );
+    const isa = useQuery(ISA, (coll) =>
+      coll.filtered('_id == $0', investment.isaId)
+    );
+    const user = useQuery(User, (coll) =>
+      coll.filtered('_id == $0', investment.userId)
+    );
+
+    return {
+      user: user[0].name,
+      amount: fund[0].amount,
+      isa: isa[0].name,
+      date: investment.createdAt,
+    };
+  });
 };

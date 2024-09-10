@@ -36,7 +36,8 @@ This is a small demo application, written using expo / React-Native. The aim is 
 - Better navigation, either some form of AppBar at the top or bottom of the core pages. 
 - I've opted for a small custom hook that will inject initial data into the Realm DB if it does not find anything. This is in order to prevent the need for creating separate 'create' components for each of the datatypes (User, Fund, ISA).
 - Currently there is no 'notification' or 'snackbar' to indicate when an investment has been created successfully. 
-- Various pieces of state are clumped, eg the state on the new-investment page. Ideally this would be refactored to be easier to read.  
+- Various pieces of state are clumped, eg the state on the new-investment page. Ideally this would be refactored to be easier to read.
+- There is likely a better way to do 1-to-many relations regarding investments than the way I have done it via storing the ids and querying each model.
 
 #### Challenges:
 

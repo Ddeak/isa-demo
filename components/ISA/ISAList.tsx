@@ -2,7 +2,7 @@ import { ISA } from '@/schema/ISA';
 import Colours from '@/constants/Colours';
 import { Routes } from '@/constants/routes';
 import { Link } from 'expo-router';
-import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { Button, Divider, Text } from 'react-native-paper';
 import { Results } from 'realm';
 

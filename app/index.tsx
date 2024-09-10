@@ -1,4 +1,4 @@
-import AddButton from '@/components/AddButton';
+import AddButton from '@/components/Buttons/AddButton';
 import ISAList from '@/components/ISA/ISAList';
 import Colours from '@/constants/Colours';
 import { useQuery } from '@realm/react';
@@ -6,7 +6,7 @@ import { StyleSheet, View } from 'react-native';
 import { Icon, Text } from 'react-native-paper';
 import { ISA } from '../schema/ISA';
 import { useInitialData } from '@/helpers/hooks';
-import InvestmentButton from '@/components/InvestmentButton';
+import InvestmentButton from '@/components/Buttons/InvestmentButton';
 
 const HomeScreen = () => {
   const isas = useQuery(ISA);
